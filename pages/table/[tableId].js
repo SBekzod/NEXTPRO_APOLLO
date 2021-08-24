@@ -7,25 +7,25 @@ import { ChannelList } from "../../apollo/channel";
 export default function GetStartedPage() {
   const { query } = useRouter();
 
-  // const [dataF, setDataF] = useState([]);
+  const [dataObj, setDataObj] = useState(null);
   const { loading, error, data, refetch } = useQuery(ChannelList, {
     variables: { mb_id: "5f8d82bb3897c708d161151e" },
   });
 
-  // if (typeof data !== "undefined" && dataF.length == 0) {
-  //   setDataF([...data.channels]);
-  //   console.log("SETDATAF");
-  // }
+  // console.log("APOLLO DATA");
+  // console.log(data);
 
-  console.log("APOLLO DATA");
-  console.log(data);
+  if (data && !dataObj) {
+    setDataObj(data);
+  }
 
   return (
     <div>
       <p>THIS IS JUST A TABLE {query.tableId}</p>
-      {data &&
-        data.channels.map((ele) => {
+      {dataObj !== null &&
+        dataObj.channels.map((ele) => {
           console.log(ele.channel_id);
+          return <p>{ele.channel_id}</p>;
         })}
     </div>
   );
