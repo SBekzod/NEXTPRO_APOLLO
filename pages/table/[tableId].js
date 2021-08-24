@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { useQuery, useMutation } from "@apollo/client";
 import { ChannelList } from "../../apollo/channel";
+import ChannelComponent from "../../components/channelCompo";
 
 export default function GetStartedPage() {
   const { query } = useRouter();
