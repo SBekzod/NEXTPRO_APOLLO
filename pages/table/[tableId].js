@@ -5,11 +5,22 @@ import { useQuery, useMutation } from "@apollo/client";
 import { ChannelList } from "../../apollo/channel";
 import ChannelComponent from "../../components/channelCompo";
 import Link from "next/link";
+import client from "../../apollo/apollo-client";
 
 export default function GetStartedPage() {
   const { query } = useRouter();
 
   const [dataObj, setDataObj] = useState(null);
+
+  // client.query({ query: ChannelList, variables: { mb_id: "5f8d82bb3897c708d161151e" }})
+  // .then(data => {
+  //   console.log(data);
+  // })
+  // .catch((err) => {
+  //   throw err;
+  // });
+
+
   const { loading, error, data, refetch } = useQuery(ChannelList, {
     variables: { mb_id: "5f8d82bb3897c708d161151e" },
   });
